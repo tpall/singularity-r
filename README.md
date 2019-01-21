@@ -1,10 +1,10 @@
 # Singularity R
 
-[![Build Status](https://travis-ci.org/nickjer/singularity-r.svg?branch=master)](https://travis-ci.org/nickjer/singularity-r)
-[![Singularity Hub](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/462)
+[![Build Status](https://travis-ci.org/tpall/singularity-r.svg?branch=master)](https://travis-ci.org/tpall/singularity-r)
+[![Singularity Hub](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/2114)
 [![GitHub License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-Singularity image for [R].
+Singularity image for [R] with git and subversion.
 
 This is still a work in progress.
 
@@ -22,7 +22,7 @@ Instead of building it yourself you can download the pre-built image from
 [Singularity Hub](https://www.singularity-hub.org) with:
 
 ```sh
-singularity pull --name singularity-r.simg shub://nickjer/singularity-r
+singularity pull --name singularity-r.simg shub://tpall/singularity-r
 ```
 
 ## Run
@@ -44,9 +44,8 @@ singularity run --app R singularity-r.simg
 Example:
 
 ```console
-$ singularity run --app R singularity-r.simg --version
-R version 3.4.3 (2017-11-30) -- "Kite-Eating Tree"
-Copyright (C) 2017 The R Foundation for Statistical Computing
+R version 3.5.2 (2018-12-20) -- "Eggshell Igloo"
+Copyright (C) 2018 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -68,7 +67,7 @@ Example:
 
 ```console
 $ singularity run --app Rscript singularity-r.simg --version
-R scripting front-end version 3.4.3 (2017-11-30)
+R scripting front-end version 3.5.2 (2018-12-20)
 ```
 
 ## Contributing
