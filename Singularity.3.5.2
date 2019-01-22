@@ -50,7 +50,7 @@ From: ubuntu:16.04
     subversion
 
   # Add a default CRAN mirror
-  echo "options(repos = c(CRAN = 'http://cloud.r-project.org/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site
+  echo "options(repos = c(CRAN = 'https://cloud.r-project.org/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site
 
   # Add a directory for host R libraries
   mkdir -p /library
