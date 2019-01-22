@@ -4,7 +4,7 @@
 [![Singularity Hub](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/2114)
 [![GitHub License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-Singularity image for [R] with git and subversion.
+Singularity image for [R] including **git** and **subversion**.
 
 This is still a work in progress.
 
