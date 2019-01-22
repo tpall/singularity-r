@@ -47,7 +47,8 @@ From: ubuntu:16.04
     libcairo2-dev \
     libxt-dev \
     git \
-    subversion
+    subversion \
+    openssh-server
 
   # Add a default CRAN mirror
   echo "options(repos = c(CRAN = 'https://cloud.r-project.org/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site
