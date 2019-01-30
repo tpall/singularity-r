@@ -1,8 +1,8 @@
 BootStrap: docker
-From: ubuntu:16.04
+From: ubuntu:18.04
 
 %labels
-  Maintainer Jeremy Nicklas
+  Maintainer tpall
   R_Version 3.5.2
 
 %apprun R
@@ -41,6 +41,7 @@ From: ubuntu:16.04
     r-recommended=${R_VERSION}* \
     r-base-html=${R_VERSION}* \
     r-doc-html=${R_VERSION}* \
+    pandoc \
     libcurl4-openssl-dev \
     libssl-dev \
     libxml2-dev \
