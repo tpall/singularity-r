@@ -1,5 +1,5 @@
 BootStrap: docker
-From: ubuntu:18.04
+From: ubuntu:16.04
 
 %labels
   Maintainer tpall
@@ -21,8 +21,7 @@ From: ubuntu:18.04
   # Get dependencies
   apt-get update
   apt-get install -y --no-install-recommends \
-    locales \
-    gnupg2
+    locales
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
