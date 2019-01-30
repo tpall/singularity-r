@@ -21,7 +21,8 @@ From: ubuntu:18.04
   # Get dependencies
   apt-get update
   apt-get install -y --no-install-recommends \
-    locales
+    locales \
+    gnupg2
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
