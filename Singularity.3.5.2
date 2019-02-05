@@ -21,8 +21,7 @@ From: ubuntu:16.04
   # Get dependencies
   apt-get update
   apt-get install -y --no-install-recommends \
-    locales \
-    software-properties-common
+    locales
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
@@ -52,20 +51,6 @@ From: ubuntu:16.04
     git \
     subversion \
     openssh-client
-  
-  # Install rstan  
-  # Add marutter's c2d4u repository, (and rrutter for CRAN builds too)
-  add-apt-repository -y "ppa:marutter/rrutter"
-  add-apt-repository -y "ppa:marutter/c2d4u"
-  apt-get update
-  apt-get install r-cran-rstan
-  
-  # C++ toolchain configuration
-  Rscript -e 'dotR <- file.path(Sys.getenv("HOME"), ".R")'
-  Rscript -e 'if (!file.exists(dotR)) dir.create(dotR)'
-  Rscript -e 'M <- file.path(dotR, "Makevars")'
-  Rscript -e 'if (!file.exists(M)) file.create(M)'
-  Rscript -e 'cat("\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC","CXX14=g++",file = M,sep = "\n", append = TRUE)'
 
   # Add a default CRAN mirror
   echo "options(repos = c(CRAN = 'https://cloud.r-project.org/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site
