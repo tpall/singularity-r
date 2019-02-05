@@ -2,7 +2,7 @@ BootStrap: docker
 From: ubuntu:16.04
 
 %labels
-  Maintainer Jeremy Nicklas
+  Maintainer tpall
   R_Version 3.5.2
 
 %apprun R
