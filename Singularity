@@ -41,6 +41,8 @@ From: ubuntu:16.04
     r-recommended=${R_VERSION}* \
     r-base-html=${R_VERSION}* \
     r-doc-html=${R_VERSION}* \
+    pandoc \
+    pandoc-citeproc \
     libcurl4-openssl-dev \
     libssl-dev \
     libxml2-dev \
@@ -48,7 +50,8 @@ From: ubuntu:16.04
     libxt-dev \
     git \
     subversion \
-    openssh-client
+    openssh-client \
+    libpq-dev
 
   # Add a default CRAN mirror
   echo "options(repos = c(CRAN = 'https://cloud.r-project.org/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site
