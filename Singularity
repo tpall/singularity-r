@@ -88,14 +88,17 @@ From: debian:stretch
     xvfb \
     zlib1g-dev" \
   && apt-get install -y --no-install-recommends $BUILDDEPS \
-  && cd tmp/ \
+  && cd tmp/
+  
   ## Download source code
-  && curl -O https://cran.r-project.org/src/base/R-3/R-${R_VERSION}.tar.gz \
+  curl -O https://cran.r-project.org/src/base/R-3/R-${R_VERSION}.tar.gz
+  
   ## Extract source code
-  && tar -xf R-${R_VERSION}.tar.gz \
-  && cd R-${R_VERSION} \
+  tar -xf R-${R_VERSION}.tar.gz \
+  && cd R-${R_VERSION}
+  
   ## Set compiler flags
-  && R_PAPERSIZE=letter \
+  R_PAPERSIZE=letter \
     R_BATCHSAVE="--no-save --no-restore" \
     R_BROWSER=xdg-open \
     PAGER=/usr/bin/pager \
@@ -106,7 +109,8 @@ From: debian:stretch
     LIBnn=lib \
     AWK=/usr/bin/awk \
     CFLAGS="-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g" \
-    CXXFLAGS="-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g" \
+    CXXFLAGS="-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g"
+  
   ## Configure options
   ./configure --enable-R-shlib \
                --enable-memory-profiling \
@@ -114,32 +118,39 @@ From: debian:stretch
                --with-blas \
                --with-tcltk \
                --disable-nls \
-               --with-recommended-packages \
+               --with-recommended-packages
+  
   ## Build and install
-  && make \
-  && make install \
+  make \
+  && make install
+  
   ## Add a default CRAN mirror
-  && echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site \
+  echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
+  
   ## Add a library directory (for user-installed packages)
-  && mkdir -p /usr/local/lib/R/site-library \
+  mkdir -p /usr/local/lib/R/site-library \
   && chown root:staff /usr/local/lib/R/site-library \
-  && chmod g+wx /usr/local/lib/R/site-library \
+  && chmod g+wx /usr/local/lib/R/site-library
+  
   ## Fix library path
-  && echo "R_LIBS_USER='/usr/local/lib/R/site-library'" >> /usr/local/lib/R/etc/Renviron \
-  && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron \
-  ## install packages from date-locked MRAN snapshot of CRAN
-  && [ -z "$BUILD_DATE" ] && BUILD_DATE=$(TZ="America/Los_Angeles" date -I) || true \
+  echo "R_LIBS_USER='/usr/local/lib/R/site-library'" >> /usr/local/lib/R/etc/Renviron \
+  && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron
+  
+  ## Install packages from date-locked MRAN snapshot of CRAN
+  [ -z "$BUILD_DATE" ] && BUILD_DATE=$(TZ="America/Los_Angeles" date -I) || true \
   && MRAN=https://mran.microsoft.com/snapshot/${BUILD_DATE} \
   && echo MRAN=$MRAN >> /etc/environment \
   && export MRAN=$MRAN \
-  && echo "options(repos = c(CRAN='$MRAN'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site \
+  && echo "options(repos = c(CRAN='$MRAN'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
+  
   ## Use littler installation scripts
-  && Rscript -e "install.packages(c('littler', 'docopt'), repo = '$MRAN')" \
+  Rscript -e "install.packages(c('littler', 'docopt'), repo = '$MRAN')" \
   && ln -s /usr/local/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r \
   && ln -s /usr/local/lib/R/site-library/littler/examples/installGithub.r /usr/local/bin/installGithub.r \
-  && ln -s /usr/local/lib/R/site-library/littler/bin/r /usr/local/bin/r \
+  && ln -s /usr/local/lib/R/site-library/littler/bin/r /usr/local/bin/r
+  
   ## Clean up from R source install
-  && cd / \
+  cd / \
   && rm -rf /tmp/* \
   && apt-get remove --purge -y $BUILDDEPS \
   && apt-get autoremove -y \
