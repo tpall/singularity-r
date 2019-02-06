@@ -74,6 +74,7 @@ From: debian:stretch
     liblzma-dev \
     libx11-dev \
     libxt-dev \
+    unixodbc-dev
     perl \
     tcl8.6-dev \
     tk8.6-dev \
