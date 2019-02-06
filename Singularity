@@ -86,7 +86,8 @@ From: debian:stretch
     xauth \
     xfonts-base \
     xvfb \
-    zlib1g-dev" \
+    zlib1g-dev \
+    libpq-dev" \
   && apt-get install -y --no-install-recommends $BUILDDEPS \
   && cd tmp/
   
