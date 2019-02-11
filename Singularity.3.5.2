@@ -88,7 +88,8 @@ From: debian:stretch
     xfonts-base \
     xvfb \
     zlib1g-dev \
-    libgit2-dev" \
+    libgit2-dev \
+    libcurl4-gnutls-dev" \
   && apt-get install -y --no-install-recommends $BUILDDEPS \
   && cd tmp/
   
