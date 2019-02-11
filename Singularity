@@ -130,13 +130,11 @@ From: debian:stretch
   echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
   
   ## Add a library directory (for user-installed packages)
-  mkdir -p /usr/local/lib/R/site-library \
-  && chown root:staff /usr/local/lib/R/site-library \
-  && chmod g+wx /usr/local/lib/R/site-library
+  mkdir -p /R/site-library
   
   ## Fix library path
-  echo "R_LIBS_USER='/usr/local/lib/R/site-library'" >> /usr/local/lib/R/etc/Renviron \
-  && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron
+  echo "R_LIBS_USER='/R/site-library'" >> /usr/local/lib/R/etc/Renviron \
+  && echo "R_LIBS=\${R_LIBS-'/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron
   
   ## Install packages from date-locked MRAN snapshot of CRAN
   [ -z "$BUILD_DATE" ] && BUILD_DATE=$(TZ="America/Los_Angeles" date -I) || true \
