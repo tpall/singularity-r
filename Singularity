@@ -63,7 +63,6 @@ From: debian:stretch
     default-jdk \
     libbz2-dev \
     libcairo2-dev \
-    libcurl4-openssl-dev \
     libpango1.0-dev \
     libjpeg-dev \
     libicu-dev \
