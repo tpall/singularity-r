@@ -129,6 +129,14 @@ From: debian:stretch
   ## Add a default CRAN mirror
   echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
   
+  ## Add a library directory (for user-installed packages)
+  mkdir -p /usr/local/lib/R/site-library
+  
+  ## Fix library path
+  echo "R_LIBS_USER='~/R/library'" >> /usr/local/lib/R/etc/Renviron \
+  && echo "R_LIBS_SITE='/usr/local/lib/R/site-library'" >> /usr/local/lib/R/etc/Renviron \
+  && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron
+  
   ## Install packages from date-locked MRAN snapshot of CRAN
   [ -z "$BUILD_DATE" ] && BUILD_DATE=$(TZ="America/Los_Angeles" date -I) || true \
   && MRAN=https://mran.microsoft.com/snapshot/${BUILD_DATE} \
@@ -138,9 +146,9 @@ From: debian:stretch
   
   ## Use littler installation scripts
   Rscript -e "install.packages(c('littler', 'docopt'), repo = '$MRAN')" \
-  && ln -s /usr/local/lib/R/library/littler/examples/install2.r /usr/local/bin/install2.r \
-  && ln -s /usr/local/lib/R/library/littler/examples/installGithub.r /usr/local/bin/installGithub.r \
-  && ln -s /usr/local/lib/R/library/littler/bin/r /usr/local/bin/r
+  && ln -s /usr/local/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r \
+  && ln -s /usr/local/lib/R/site-library/littler/examples/installGithub.r /usr/local/bin/installGithub.r \
+  && ln -s /usr/local/lib/R/site-library/littler/bin/r /usr/local/bin/r
   
   ## Clean up from R source install
   cd / \
