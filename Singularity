@@ -130,7 +130,9 @@ From: debian:stretch
   echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
   
   ## Add a library directory (for user-installed packages)
-  mkdir -p /usr/local/lib/R/site-library
+  mkdir -p /usr/local/lib/R/site-library \
+  && chown root:staff /usr/local/lib/R/site-library \
+  && chmod g+wx /usr/local/lib/R/site-library
   
   ## Fix library path
   echo "R_LIBS_USER='~/R/library'" >> /usr/local/lib/R/etc/Renviron \
