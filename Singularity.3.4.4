@@ -55,10 +55,5 @@ From: ubuntu:16.04
   # Add a default CRAN mirror
   echo "options(repos = c(CRAN = 'https://cloud.r-project.org/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site
 
-  # Add a directory for extra R libraries
-  mkdir -p /usr/local/lib/R/site-library
-  echo "R_LIBS_USER='/usr/local/lib/R/site-library'" >> /usr/local/lib/R/etc/Renviron \
-  && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron
-
   # Clean up
   rm -rf /var/lib/apt/lists/*
