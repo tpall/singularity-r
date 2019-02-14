@@ -59,6 +59,7 @@ From: debian:stretch
     unzip \
     zip \
     zlib1g \
+    r-cran-cairo \
   && BUILDDEPS="curl \
     default-jdk \
     libbz2-dev \
@@ -87,8 +88,7 @@ From: debian:stretch
     xauth \
     xfonts-base \
     xvfb \
-    zlib1g-dev \
-    libcairo2-dev" \
+    zlib1g-dev" \
   && apt-get install -y --no-install-recommends $BUILDDEPS \
   && cd tmp/
   
