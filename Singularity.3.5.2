@@ -45,7 +45,6 @@ From: debian:stretch
     gsfonts \
     libblas-dev \
     libbz2-1.0 \
-    libcairo2 \
     libcurl3 \
     libicu57 \
     libjpeg62-turbo \
@@ -151,7 +150,6 @@ From: debian:stretch
   ## Clean up from R source install
   cd / \
   && rm -rf /tmp/* \
-  && apt-get remove --purge -y $BUILDDEPS \
   && apt-get autoremove -y \
   && apt-get autoclean -y \
   && rm -rf /var/lib/apt/lists/*
