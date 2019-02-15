@@ -45,6 +45,7 @@ From: debian:stretch
     gsfonts \
     libblas-dev \
     libbz2-1.0 \
+    libcairo2 \
     libcurl3 \
     libicu57 \
     libjpeg62-turbo \
@@ -59,7 +60,6 @@ From: debian:stretch
     unzip \
     zip \
     zlib1g \
-    r-cran-cairo \
   && BUILDDEPS="curl \
     default-jdk \
     libbz2-dev \
