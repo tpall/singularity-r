@@ -14,6 +14,12 @@ From: debian:stretch
 %runscript
   exec R "${@}"
 
+%environment
+  LC_ALL=en_US.UTF-8
+  LANG=en_US.UTF-8
+  TERM=xterm
+  export LC_ALL LANG TERM
+
 %post
   # Software versions
   export R_VERSION=${R_VERSION:-3.5.2}
@@ -87,8 +93,7 @@ From: debian:stretch
     xauth \
     xfonts-base \
     xvfb \
-    zlib1g-dev \
-    libcairo2-dev" \
+    zlib1g-dev" \
   && apt-get install -y --no-install-recommends $BUILDDEPS \
   && cd tmp/
   
@@ -130,14 +135,10 @@ From: debian:stretch
   echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
   
   ## Add a library directory (for user-installed packages)
-  mkdir -p /usr/local/lib/R/site-library \
-  && chown root:staff /usr/local/lib/R/site-library \
-  && chmod g+wx /usr/local/lib/R/site-library
+  mkdir -p /usr/local/lib/R/site-library
   
-  ## Fix library path
-  echo "R_LIBS_USER='~/R/library'" >> /usr/local/lib/R/etc/Renviron \
-  && echo "R_LIBS_SITE='/usr/local/lib/R/site-library'" >> /usr/local/lib/R/etc/Renviron \
-  && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron
+  ## Set site library path
+  echo "R_LIBS_SITE='/usr/local/lib/R/site-library'" >> /usr/local/lib/R/etc/Renviron
   
   ## Install packages from date-locked MRAN snapshot of CRAN
   [ -z "$BUILD_DATE" ] && BUILD_DATE=$(TZ="America/Los_Angeles" date -I) || true \
