@@ -19,7 +19,7 @@ install:
   - make && sudo make install 
   - cd ..
 before_script:
-  - sudo singularity build $SINGULARITY_IMAGE $SPEC
+  - sudo singularity build $SINGULARITY_IMAGE r/$SPEC
   - chmod +x run_tests.sh
 script: ./run_tests.sh
 notifications:
