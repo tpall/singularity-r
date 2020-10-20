@@ -1,9 +1,9 @@
 BootStrap: docker
-From: debian:stretch
+From: ubuntu:latest
 
 %labels
   Maintainer tpall
-  R_Version 4.0.3
+  R_Version 4.0.2
 
 %apprun R
   exec R "${@}"
@@ -22,7 +22,7 @@ From: debian:stretch
 
 %post
   # Software versions
-  export R_VERSION=${R_VERSION:-4.0.3}
+  export R_VERSION=${R_VERSION:-4.0.2}
 
   # Get dependencies
   apt-get update \
