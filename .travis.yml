@@ -20,12 +20,9 @@ install:
   - make && sudo make install 
   - cd ..
 before_script:
-  - sudo singularity build $SINGULARITY_IMAGE r/$SPEC
+  - sudo singularity build $SINGULARITY_IMAGE $SPEC
   - chmod +x run_tests.sh
 script: ./run_tests.sh
-after_success:
-  - chmod +x send.sh
-  - ./send.sh success $WEBHOOK_URL
 notifications:
   email:
     on_success: never
