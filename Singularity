@@ -3,7 +3,7 @@ From: debian:stretch
 
 %labels
   Maintainer tpall
-  R_Version 4.0.2
+  R_Version 4.0.3
 
 %apprun R
   exec R "${@}"
@@ -22,7 +22,7 @@ From: debian:stretch
 
 %post
   # Software versions
-  export R_VERSION=${R_VERSION:-4.0.2}
+  export R_VERSION=${R_VERSION:-4.0.3}
 
  # Get dependencies
   apt-get update \
@@ -98,7 +98,7 @@ From: debian:stretch
   && cd tmp/
   
   ## Download source code
-  curl -O https://cran.r-project.org/src/base/R-3/R-${R_VERSION}.tar.gz
+  curl -O https://cran.r-project.org/src/base/R-4/R-${R_VERSION}.tar.gz
   
   ## Extract source code
   tar -xf R-${R_VERSION}.tar.gz \
