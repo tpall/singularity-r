@@ -24,10 +24,17 @@ From: debian:stretch
   # Software versions
   export R_VERSION=${R_VERSION:-4.0.3}
 
- # Get dependencies
+  # Get dependencies
   apt-get update \
-  && apt-get install -y --no-install-recommends \
-    locales
+	&& apt-get install -y --no-install-recommends \
+		ed \
+		less \
+		locales \
+		vim-tiny \
+		wget \
+		ca-certificates \
+		fonts-texgyre \
+	&& rm -rf /var/lib/apt/lists/*
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
@@ -41,16 +48,25 @@ From: debian:stretch
 
   # Install
   apt-get update \
-  && apt-get install -y --no-install-recommends \
-    dirmngr gnupg apt-transport-https ca-certificates software-properties-common
-  
-  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
-    E298A3A825C0D65DFD57CBB651716619E084DAB9 \
-    && add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
-  
-  apt-get update \
-  && apt-get install -y --no-install-recommends \
-    build-essential r-base
+        && apt-get install -t unstable -y --no-install-recommends \
+                gcc-9-base \
+                libopenblas0-pthread \
+		littler \
+                r-cran-littler \
+		r-base=${R_VERSION}-* \
+		r-base-dev=${R_VERSION}-* \
+		r-recommended=${R_VERSION}-* \
+	&& ln -s /usr/lib/R/site-library/littler/examples/install.r /usr/local/bin/install.r \
+	&& ln -s /usr/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r \
+	&& ln -s /usr/lib/R/site-library/littler/examples/installBioc.r /usr/local/bin/installBioc.r \
+	&& ln -s /usr/lib/R/site-library/littler/examples/installDeps.r /usr/local/bin/installDeps.r \
+	&& ln -s /usr/lib/R/site-library/littler/examples/installGithub.r /usr/local/bin/installGithub.r \
+	&& ln -s /usr/lib/R/site-library/littler/examples/testInstalled.r /usr/local/bin/testInstalled.r \
+	&& install.r docopt \
+	&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
+	&& rm -rf /var/lib/apt/lists/*
+	
+	
   
   ## Add a library directory (for user-installed packages)
   mkdir -p /usr/local/lib/R/site-library
@@ -64,15 +80,3 @@ From: debian:stretch
   && echo MRAN=$MRAN >> /etc/environment \
   && export MRAN=$MRAN \
   && echo "options(repos = c(CRAN = '$MRAN'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
-  
-  ## Use littler installation scripts
-  Rscript -e "install.packages(c('littler', 'docopt'), repo = '$MRAN')" \
-  && ln -s /usr/local/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r \
-  && ln -s /usr/local/lib/R/site-library/littler/examples/installGithub.r /usr/local/bin/installGithub.r \
-  && ln -s /usr/local/lib/R/site-library/littler/bin/r /usr/local/bin/r
-  
-  ## Clean up from R source install
-  cd / \
-  && apt-get autoremove -y \
-  && apt-get autoclean -y \
-  && rm -rf /var/lib/apt/lists/*
