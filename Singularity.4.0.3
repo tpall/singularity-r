@@ -65,6 +65,7 @@ From: debian:stretch
     unzip \
     zip \
     zlib1g \
+    pcre2-utils \
   && BUILDDEPS="curl \
     default-jdk \
     libbz2-dev \
