@@ -48,7 +48,7 @@ From: debian:stretch
 
   # Install
   apt-get update \
-        && apt-get install -t unstable -y --no-install-recommends \
+        && apt-get install -y --no-install-recommends \
                 gcc-9-base \
                 libopenblas0-pthread \
 		littler \
