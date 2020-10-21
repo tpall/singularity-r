@@ -1,5 +1,5 @@
 BootStrap: docker
-From: debian:stretch
+From: debian:buster
 
 %labels
   Maintainer tpall
