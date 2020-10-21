@@ -7,9 +7,9 @@ env:
     - VERSION=2.6.0
   matrix:
     - SPEC=Singularity
-    - SPEC=Singularity.4.0.3
-    - SPEC=Singularity.3.5.2
+    - SPEC=Singularity.3.6.3
     - SPEC=Singularity.3.5.3
+    - SPEC=Singularity.3.5.2
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y libarchive-dev squashfs-tools wget
