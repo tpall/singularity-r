@@ -24,7 +24,7 @@ From: debian:buster
   # Software versions
   export R_VERSION=${R_VERSION:-3.6.3}
   export BUILD_DATE=${BUILD_DATE:-2020-04-24}
-  export CRAN=${CRAN:-https://cran.rstudio.com}
+  export CRAN=${CRAN:-http://cran.rstudio.com}
 
  # Get dependencies
   apt-get update \
@@ -100,7 +100,7 @@ From: debian:buster
   && cd tmp/
   
   ## Download source code
-  curl -O https://cran.r-project.org/src/base/R-3/R-${R_VERSION}.tar.gz
+  curl -O http://cran.r-project.org/src/base/R-3/R-${R_VERSION}.tar.gz
   
   ## Extract source code
   tar -xf R-${R_VERSION}.tar.gz \
@@ -141,7 +141,7 @@ From: debian:buster
   
   ## Install packages from date-locked MRAN snapshot of CRAN
   if [ -z "$BUILD_DATE" ]; then MRAN=$CRAN; \
-  else MRAN=https://mran.microsoft.com/snapshot/${BUILD_DATE}; fi \
+  else MRAN=http://mran.microsoft.com/snapshot/${BUILD_DATE}; fi \
   && echo MRAN=$MRAN >> /etc/environment \
   && export MRAN=$MRAN \
   && echo "options(repos = c(CRAN = '$MRAN'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
