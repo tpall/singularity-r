@@ -42,6 +42,7 @@ From: debian:buster
   export TERM=xterm
 
   # Install R
+  # Install R
   apt-get update \
   && apt-get install -y --no-install-recommends \
     bash-completion \
@@ -53,7 +54,7 @@ From: debian:buster
     gsfonts \
     libblas-dev \
     libbz2-1.0 \
-    libcurl3-gnutls \
+    libcurl4 \
     libicu63 \
     libjpeg62-turbo \
     libopenblas-dev \
@@ -63,6 +64,7 @@ From: debian:buster
     libreadline7 \
     libtiff5 \
     liblzma5 \
+    locales \
     make \
     unzip \
     zip \
@@ -82,7 +84,6 @@ From: debian:buster
     liblzma-dev \
     libx11-dev \
     libxt-dev \
-    unixodbc-dev
     perl \
     tcl8.6-dev \
     tk8.6-dev \

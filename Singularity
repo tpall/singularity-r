@@ -53,16 +53,16 @@ From: debian:buster
     gsfonts \
     libblas-dev \
     libbz2-1.0 \
-    libcurl3-gnutls \
+    libcurl4 \
     libicu63 \
     libjpeg62-turbo \
     libopenblas-dev \
     libpangocairo-1.0-0 \
-    libpcre3 \
     libpng16-16 \
     libreadline7 \
     libtiff5 \
     liblzma5 \
+    locales \
     make \
     unzip \
     zip \
@@ -75,14 +75,13 @@ From: debian:buster
     libpango1.0-dev \
     libjpeg-dev \
     libicu-dev \
-    libpcre3-dev \
+    libpcre2-dev \
     libpng-dev \
     libreadline-dev \
     libtiff5-dev \
     liblzma-dev \
     libx11-dev \
     libxt-dev \
-    unixodbc-dev
     perl \
     tcl8.6-dev \
     tk8.6-dev \
