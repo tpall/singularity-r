@@ -4,9 +4,7 @@
 [![Singularity Hub](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/2114)
 [![GitHub License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-Singularity image for [R] based on debian:stretch docker image and packages from [rocker-org/rocker-versioned](https://github.com/rocker-org/rocker-versioned) r-ver 3.5.2.
-
-This is still a work in progress.
+Singularity image for [R] based on debian docker.
 
 ## Build
 
