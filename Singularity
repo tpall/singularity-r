@@ -46,22 +46,24 @@ From: debian:buster
   && apt-get install -y --no-install-recommends \
     bash-completion \
     ca-certificates \
+    devscripts \
     file \
     fonts-texgyre \
     g++ \
     gfortran \
     gsfonts \
     libblas-dev \
-    libbz2-1.0 \
+    libbz2-* \
     libcurl4 \
-    libicu63 \
+    libicu* \
+    libpcre2* \
     libjpeg62-turbo \
     libopenblas-dev \
-    libpangocairo-1.0-0 \
-    libpng16-16 \
+    libpangocairo-* \
+    libpng16* \
     libreadline7 \
-    libtiff5 \
-    liblzma5 \
+    libtiff* \
+    liblzma* \
     locales \
     make \
     unzip \
@@ -83,6 +85,8 @@ From: debian:buster
     libx11-dev \
     libxt-dev \
     perl \
+    rsync \
+    subversion \
     tcl8.6-dev \
     tk8.6-dev \
     texinfo \
@@ -90,10 +94,12 @@ From: debian:buster
     texlive-fonts-recommended \
     texlive-fonts-extra \
     texlive-latex-recommended \
+    texlive-latex-extra \
     x11proto-core-dev \
     xauth \
     xfonts-base \
     xvfb \
+    wget \
     zlib1g-dev" \
   && apt-get install -y --no-install-recommends $BUILDDEPS \
   && cd tmp/
