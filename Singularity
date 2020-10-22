@@ -3,7 +3,7 @@ From: debian:buster
 
 %labels
   Maintainer tpall
-  R_Version 3.6.3
+  R_Version 4.0.3
 
 %apprun R
   exec R "${@}"
@@ -22,8 +22,8 @@ From: debian:buster
 
 %post
   # Software versions
-  export R_VERSION=${R_VERSION:-3.6.3}
-  export BUILD_DATE=${BUILD_DATE:-2020-04-24}
+  export R_VERSION=${R_VERSION:-4.0.3}
+  export BUILD_DATE=$(TZ="America/Los_Angeles" date +I)
   export CRAN=${CRAN:-http://cran.rstudio.com}
 
  # Get dependencies
@@ -100,7 +100,7 @@ From: debian:buster
   && cd tmp/
   
   ## Download source code
-  curl -O http://cran.r-project.org/src/base/R-3/R-${R_VERSION}.tar.gz
+  curl -O http://cran.r-project.org/src/base/R-4/R-${R_VERSION}.tar.gz
   
   ## Extract source code
   tar -xf R-${R_VERSION}.tar.gz \
