@@ -53,17 +53,17 @@ From: debian:buster
     gfortran \
     gsfonts \
     libblas-dev \
-    libbz2-* \
+    libbz2-1.0 \
     libcurl4 \
-    libicu* \
-    libpcre2* \
+    libicu63 \
+    libpcre2-dev \
     libjpeg62-turbo \
     libopenblas-dev \
-    libpangocairo-* \
-    libpng16* \
+    libpangocairo-1.0-0 \
+    libpng16-16 \
     libreadline7 \
-    libtiff* \
-    liblzma* \
+    libtiff5 \
+    liblzma5 \
     locales \
     make \
     unzip \
@@ -77,7 +77,6 @@ From: debian:buster
     libpango1.0-dev \
     libjpeg-dev \
     libicu-dev \
-    libpcre2-dev \
     libpng-dev \
     libreadline-dev \
     libtiff5-dev \
