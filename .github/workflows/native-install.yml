@@ -47,10 +47,10 @@ jobs:
     - name: Check out code for the container build
       uses: actions/checkout@v1
 
-    - name: Build Container and run tests
+    - name: Build Container
       env:
         SINGULARITY_RECIPE: ${{ matrix.recipe }}
-        OUTPUT_CONTAINER: container.sif
+        OUTPUT_CONTAINER: container-${{ matrix.recipe }}.sif
       run: |
        ls 
        if [ -f "${SINGULARITY_RECIPE}" ]; then
@@ -60,4 +60,8 @@ jobs:
            echo "Present working directory: $PWD"
            ls
        fi
-       singularity exec ${OUTPUT_CONTAINER} r -q -e "R.Version()"
+    - name: Test Container
+      env:
+        SINGULARITY_IMAGE: container-${{ matrix.recipe }}.sif
+      run: |
+        singularity exec ${SINGULARITY_IMAGE} r -q -e "R.Version()"
