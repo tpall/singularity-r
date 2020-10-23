@@ -13,10 +13,10 @@ set -e
 set -x
 
 # Verify R version
-singularity exec R -q -e "stopifnot(getRversion() == '$(version)')"
+singularity exec ${SINGULARITY_IMAGE} r -q -e "stopifnot(getRversion() == '$(version)')"
 
 # Test littler r script
-singularity exec r -e "R.Version()"
+singularity exec ${SINGULARITY_IMAGE} r -q -e "R.Version()"
 
 { set +x; } 2>/dev/null
 echo "All tests passed!"
