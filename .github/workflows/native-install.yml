@@ -9,7 +9,6 @@ jobs:
       fail-fast: false
       matrix:
         recipe: ["Singularity", "Singularity.4.0.3", "Singularity.3.6.3", "Singularity.3.5.3"]
-        singularity: [2.6.0, 3.2.1]
     steps:
 
     - name: Set up Go 1.12
@@ -31,7 +30,7 @@ jobs:
 
     - name: Install Singularity
       env:
-        SINGULARITY_VERSION: ${{ matrix.singularity }}
+        SINGULARITY_VERSION: 3.2.1
         GOPATH: /tmp/go
       run: |
         mkdir -p $GOPATH
