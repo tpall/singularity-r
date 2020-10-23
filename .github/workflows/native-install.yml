@@ -60,4 +60,4 @@ jobs:
            echo "Present working directory: $PWD"
            ls
        fi
-       ./run_tests.sh
+       singularity exec ${OUTPUT_CONTAINER} r -q -e "R.Version()"
