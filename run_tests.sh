@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export SINGULARITY_IMAGE="${SINGULARITY_IMAGE:-singularity-r.simg}"
+export SINGULARITY_IMAGE="${SINGULARITY_IMAGE:-r.simg}"
 echo "Using Singularity image: ${SINGULARITY_IMAGE}"
 
 version () {
@@ -14,6 +14,9 @@ set -x
 
 # Verify R version
 singularity exec R -q -e "stopifnot(getRversion() == '$(version)')"
+
+# Test littler r script
+singularity exec ${SINGULARITY_IMAGE} r -e "R.Version()"
 
 { set +x; } 2>/dev/null
 echo "All tests passed!"
