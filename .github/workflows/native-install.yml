@@ -6,6 +6,7 @@ jobs:
     name: Build
     runs-on: ubuntu-18.04
     strategy:
+      fail-fast: false
       matrix:
         recipe: ["Singularity", "Singularity.4.0.3", "Singularity.3.6.3", "Singularity.3.5.3"]
         singularity: [2.5.2, 3.2.1]
