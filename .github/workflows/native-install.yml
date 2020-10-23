@@ -60,8 +60,3 @@ jobs:
            echo "Present working directory: $PWD"
            ls
        fi
-    - name: Test Container
-      env:
-        SINGULARITY_IMAGE: container-${{ matrix.recipe }}.sif
-      run: |
-        singularity exec ${SINGULARITY_IMAGE} r -q -e "R.Version()"
