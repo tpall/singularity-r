@@ -16,7 +16,7 @@ set -x
 singularity exec R -q -e "stopifnot(getRversion() == '$(version)')"
 
 # Test littler r script
-singularity exec ${SINGULARITY_IMAGE} r -e "R.Version()"
+singularity exec r -e "R.Version()"
 
 { set +x; } 2>/dev/null
 echo "All tests passed!"
