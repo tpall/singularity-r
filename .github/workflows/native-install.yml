@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        recipe: ["Singularity", "Singularity.4.0.3", "Singularity.3.6.3", "Singularity.3.5.3"]
+        recipe: ["Singularity", "Singularity.3.6.3", "Singularity.3.5.3"]
     steps:
 
     - name: Set up Go 1.12
