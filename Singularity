@@ -23,7 +23,7 @@ From: debian:buster
 %post
   # Software versions
   export R_VERSION=${R_VERSION:-4.0.3}
-  export BUILD_DATE=${BUILD_DATE:-2020-10-23}
+  export BUILD_DATE=${BUILD_DATE:-2020-12-15}
   export CRAN=${CRAN:-http://cran.rstudio.com}
 
  # Get dependencies
