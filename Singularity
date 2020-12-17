@@ -61,7 +61,7 @@ From: debian:bullseye
     libopenblas-dev \
     libpangocairo-1.0-0 \
     libpng16-16 \
-    libreadline7 \
+    readline \
     libtiff5 \
     liblzma5 \
     locales \
