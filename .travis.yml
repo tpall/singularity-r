@@ -3,13 +3,10 @@ dist: trusty
 language: generic
 env:
   global:
-    - SINGULARITY_IMAGE=singularity-r.simg
+    - SINGULARITY_IMAGE=singularity.sif
     - VERSION=2.6.0
   matrix:
     - SPEC=Singularity
-    - SPEC=Singularity.4.0.3
-    - SPEC=Singularity.3.6.3
-    - SPEC=Singularity.3.5.3
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y libarchive-dev squashfs-tools wget
