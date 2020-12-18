@@ -60,21 +60,4 @@ jobs:
            echo "Present working directory: $PWD"
            ls
        fi
-       ls
-    
-    - name: Test
-      env:
-        SINGULARITY_IMAGE: container-${{ matrix.recipe }}.sif
-      run: |
-        echo "Using Singularity image: ${SINGULARITY_IMAGE}"
-        version () {
-          singularity inspect "${SINGULARITY_IMAGE}" | \
-            grep "R_V" | \
-            awk -F' ' '{print $2}'
-        }
-        set -e
-        set -x
-        # Verify R version
-        singularity exec ${SINGULARITY_IMAGE} r -q -e "stopifnot(getRversion() == '$(version)')"
-        { set +x; } 2>/dev/null
-        echo "All tests passed!"
+       singularity exec ${OUTPUT_CONTAINER} Rscript -e 'getRversion()'
