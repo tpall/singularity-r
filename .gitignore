@@ -1,2 +1,4 @@
-singularity-r.simg
+*.simg
+*.sif
 .Rproj.user
+.Rhistory
