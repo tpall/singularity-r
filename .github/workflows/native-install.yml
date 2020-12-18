@@ -60,4 +60,12 @@ jobs:
            echo "Present working directory: $PWD"
            ls
        fi
-       singularity exec ${OUTPUT_CONTAINER} Rscript -e 'getRversion()'
+       if [ -f "${OUTPUT_CONTAINER}" ]; then
+            echo "Testing the image...!"
+            singularity exec ${OUTPUT_CONTAINER} r -e 'getRversion()'
+        else
+           echo "${OUTPUT_CONTAINER} is not found."
+           echo "Present working directory: $PWD"
+           ls
+       fi
+
